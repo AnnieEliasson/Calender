@@ -1,18 +1,44 @@
+let currentDate = new Date();
+
 function createCalendar() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
-  const monthName = today.toLocaleDateString("sv-SE", {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+
+  const monthName = currentDate.toLocaleDateString("sv-SE", {
     month: "long",
   });
 
   const calendar = document.getElementById("calendar");
   calendar.innerHTML = "";
 
+  const header = document.createElement("div");
+  header.classList.add("calendar-header");
+
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "<";
+
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = ">";
+
   const monthText = document.createElement("h2");
   monthText.classList.add("month-title");
-  monthText.textContent = monthName;
-  calendar.appendChild(monthText);
+  monthText.textContent = `${monthName} ${year}`;
+
+  prevBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    createCalendar();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    createCalendar();
+  });
+
+  header.appendChild(prevBtn);
+  header.appendChild(monthText);
+  header.appendChild(nextBtn);
+
+  calendar.appendChild(header);
 
   const grid = document.createElement("div");
   grid.classList.add("calendar-grid");
@@ -21,7 +47,7 @@ function createCalendar() {
     "Måndag",
     "Tisdag",
     "Onsdag",
-    "Tordag",
+    "Torsdag",
     "Fredag",
     "Lördag",
     "Söndag",

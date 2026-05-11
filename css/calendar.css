@@ -34,12 +34,29 @@
   background: transparent;
 }
 
-.month-title{
-  
-  text-align: center;
+.calendar-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: .5rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid black;
   box-shadow: 0px 1px 2px black, inset 1px 1px 1px white;
   border-radius: .5rem;
+  padding: .5rem;
+}
+
+.calendar-header button{
+  padding: .3rem;
+  background-color: #202020;
+  color: white;
+  border: none;
+  width: 4rem;
+  border-radius: .5rem;
+  box-shadow: 2px 2px 2px black, inset 1px 1px 1px white;
+}
+
+.calendar-header button:hover{
+  background-color: #404040;
+  cursor: pointer;
 }
